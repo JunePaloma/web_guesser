@@ -1,19 +1,18 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
+number = rand(100)
 
 
 get '/' do
 guess = params["guess"].to_i
-number = set_num
+# number = set_num
 output = check_output(guess, number)
 background_color = select_color(guess, number)
 erb :index, :locals => {:number => number, :output => output, :background_color => background_color}
 end
 
-def set_num
-   rand(100)
-end
+
 
 def check_output(guess, number)
   if number < (guess-5)
@@ -38,4 +37,4 @@ def select_color(guess, number)
   else
     color = "#2F951D"
   end
-end   
+end
